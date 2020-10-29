@@ -1,13 +1,11 @@
 package ru.job4j.array;
 
-import java.util.Objects;
-
 public class MatrixCheck {
 
   public static boolean monoHorizontal(char[][] board, int row) {
     boolean result = true;
     for (int i = 0; i < board.length; i++) {
-      if (Objects.equals(board[row][i], "X")) {
+      if (!String.valueOf(board[row][i]).equals("X")) {
         result = false;
         break;
       }
@@ -18,7 +16,7 @@ public class MatrixCheck {
   public static boolean monoVertical(char[][] board, int column) {
     boolean result = true;
     for (int i = 0; i < board.length; i++) {
-      if (Objects.equals(board[i][column], "X")) {
+      if (!String.valueOf(board[i][column]).equals("X")) {
         result = false;
         break;
       }
@@ -32,5 +30,18 @@ public class MatrixCheck {
       rsl[i] = board[i][i];
     }
     return rsl;
+  }
+
+  public static boolean isWin(char[][] board) {
+    boolean result = false;
+    for (int i = 0; i < board.length; i++) {
+      if (String.valueOf(board[i][i]).equals("X")) {
+        if ((monoHorizontal(board, i) || monoVertical(board, i))) {
+          result = true;
+          break;
+        }
+      }
+    }
+    return result;
   }
 }
