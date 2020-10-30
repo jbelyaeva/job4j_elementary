@@ -5,7 +5,7 @@ public class MatrixCheck {
   public static boolean monoHorizontal(char[][] board, int row) {
     boolean result = true;
     for (int i = 0; i < board.length; i++) {
-      if (!String.valueOf(board[row][i]).equals("X")) {
+      if (board[row][i]!='X'){
         result = false;
         break;
       }
@@ -16,7 +16,7 @@ public class MatrixCheck {
   public static boolean monoVertical(char[][] board, int column) {
     boolean result = true;
     for (int i = 0; i < board.length; i++) {
-      if (!String.valueOf(board[i][column]).equals("X")) {
+      if (board[i][column]!='X') {
         result = false;
         break;
       }
@@ -35,7 +35,7 @@ public class MatrixCheck {
   public static boolean isWin(char[][] board) {
     boolean result = false;
     for (int i = 0; i < board.length; i++) {
-      if (String.valueOf(board[i][i]).equals("X")) {
+      if (board[i][i]=='X') {
         if ((monoHorizontal(board, i) || monoVertical(board, i))) {
           result = true;
           break;
