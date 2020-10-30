@@ -15,8 +15,8 @@ public class Defragment {
     for (int index = 0; index < array.length; index++) {
       if ((array[index] == null) && (index != array.length - 1)) {
         scrambling(array, index);
-        index = index - 1;
-        counter = counter + 1;
+        index--;
+        counter++;
         if (counter == array.length - 1) {
           break;
         }
