@@ -6,7 +6,6 @@ public class UnionSortLoop {
     int[] rsl = new int[left.length + right.length];
     int leftIndex = 0;
     int rightIndex = 0;
-
     while (leftIndex + rightIndex < rsl.length) {
       if (rightIndex == right.length
           || leftIndex != left.length && left[leftIndex] < right[rightIndex]) {
