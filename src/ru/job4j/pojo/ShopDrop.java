@@ -9,5 +9,5 @@ public class ShopDrop {
     products[products.length - 1] = null;
     return products;
   }
-  
+
 }
