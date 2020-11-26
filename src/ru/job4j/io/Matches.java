@@ -8,6 +8,7 @@ public class Matches {
     Scanner input = new Scanner(System.in);
     int ost = 11;
     System.out.println("По очереди берите спички от 1 до 3-х");
+    int player = 0;
     while (ost > 0) {
       int i = 1;
       while (i < 4) {
@@ -25,10 +26,11 @@ public class Matches {
           System.out.println("Осталось " + ost + " спичек.");
           i += 1;
         } else {
-          System.out.println("Игрок " + i + " выиграл.");
+          player = i;
           break;
         }
       }
     }
+    System.out.println("Игрок " + player + " выиграл.");
   }
 }
