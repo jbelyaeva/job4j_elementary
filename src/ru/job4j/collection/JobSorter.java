@@ -13,6 +13,6 @@ public class JobSorter {
         new Job("X task", 0)
     );
     Collections.sort(jobs, new JobDescByName().thenComparing(new JobAscByPriority()));
-    System.out.println(jobs);
+
   }
 }
