@@ -34,7 +34,6 @@ public class Departments {
 
   public static List<String> sortDesc(List<String> orgs) {
     orgs.sort(new DepDescComp());
-
     return new ArrayList<>(orgs);
   }
 }
