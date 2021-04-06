@@ -6,19 +6,33 @@ import java.util.Map;
 public class Article {
 
   public static boolean generateBy(String origin, String line) {
-    boolean rsl = true;
     String[] originText = origin.split(" |[.,:!]");
     String[] newText = line.split(" ");
-    Map<String, String> check = new HashMap<>();
+    Map<String, Integer> map1 = new HashMap<String, Integer>();
+    Map<String, Integer> map2 = new HashMap<String, Integer>();
     for (String o : originText) {
-      check.put(o, "");
+      int value = 1;
+      if (map1.containsKey(o)) {
+        value = map1.get(o);
+        value++;
+      }
+      map1.put(o, value);
     }
-    for (String t : newText) {
-      if (!check.containsKey(t)) {
-        rsl = false;
-        break;
+
+    for (String n : newText) {
+      int value = 1;
+      if (map2.containsKey(n)) {
+        value = map2.get(n);
+        value++;
+      }
+      map2.put(n, value);
+    }
+
+    for (String s : map2.keySet()) {
+      if (!map1.containsKey(s)) {
+        return false;
       }
     }
-    return rsl;
+    return true;
   }
 }
