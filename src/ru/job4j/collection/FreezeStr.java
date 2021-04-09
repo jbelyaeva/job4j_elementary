@@ -30,9 +30,6 @@ public class FreezeStr {
         }
       }
     }
-    if (!map.isEmpty()) {
-      return false;
-    }
-    return true;
+    return map.isEmpty();
   }
 }
