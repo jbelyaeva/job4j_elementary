@@ -46,7 +46,10 @@ public class FI {
     }
 
     System.out.println("сортировка по убыванию длины");
-    Comparator<String> cmpDescSize = (left, right) -> right.length() - left.length();
+    Comparator<String> cmpDescSize = (left, right) -> {
+      System.out.println("compare - " + left + " : " + right);
+      return right.length() - left.length();
+    };
 
     Collections.sort(mas, cmpDescSize);
     for (String m : mas) {
