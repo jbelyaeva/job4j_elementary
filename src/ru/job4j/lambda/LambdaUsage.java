@@ -26,7 +26,7 @@ public class LambdaUsage {
     System.out.println("сортировка по убыванию длины");
     Comparator<String> cmpDescSize = (left, right) -> {
       System.out.println("compare - " + left + " : " + right);
-      return right.length() - left.length();
+      return Integer.compare(right.length(), left.length());
     };
     
     Collections.sort(mas, cmpDescSize);
