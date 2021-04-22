@@ -10,26 +10,24 @@ import org.junit.Test;
 
 public class DiapasonTest {
 
-  Diapason function = new Diapason();
-
   @Test
   public void whenLinearFunctionThenLinearResults() {
-    List<Double> result = function.diapason(5, 8, x -> 2 * x + 1);
+    List<Double> result = Diapason.diapason(5, 8, x -> 2 * x + 1);
     List<Double> expected = Arrays.asList(11D, 13D, 15D);
     assertThat(result, is(expected));
   }
 
   @Test
   public void whenQuadraticFunctionThenLinearResults() {
-    List<Double> result = function.diapason(5, 8, x -> 2 * pow((x - 1), 2) + 4);
+    List<Double> result = Diapason.diapason(5, 8, x -> 2 * pow((x - 1), 2) + 4);
     List<Double> expected = Arrays.asList(36D, 54D, 76D);
     assertThat(result, is(expected));
   }
 
   @Test
   public void whenExponentialFunctionThenLinearResults() {
-    List<Double> result = function.diapason(2, 5, x -> pow(x, x) + 4);
-    List<Double> expected = Arrays.asList(8D, 31D, 260D);
+    List<Double> result = Diapason.diapason(2, 5, x -> pow(2, x) + 4);
+    List<Double> expected = Arrays.asList(8D, 12D, 20D);
     assertThat(result, is(expected));
   }
 
