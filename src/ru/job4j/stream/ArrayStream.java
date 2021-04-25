@@ -9,7 +9,7 @@ public class ArrayStream {
   public static void main(String[] args) {
     List<Integer> numbers = Arrays.asList(3, -2, 2, -3, 7, 0, 5)
         .stream()
-        .filter(t -> t >= 0)
+        .filter(t -> t > 0)
         .collect(Collectors.toList());
     numbers.forEach(System.out::println);
   }
