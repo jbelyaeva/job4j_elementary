@@ -1,12 +1,12 @@
 package ru.job4j.stream.builder;
 
-import ru.job4j.stream.builder.Student.Builder;
+import ru.job4j.stream.builder.Pupil.Builder;
 
 public class School {
 
   public static void main(String[] args) {
 
-    Student student = new Builder().withName("Вася")
+    Pupil student = new Builder().withName("Вася")
         .withSurname("Васин")
         .withAge(12)
         .withIdFamily(1)

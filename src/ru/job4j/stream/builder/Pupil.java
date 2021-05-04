@@ -2,7 +2,7 @@ package ru.job4j.stream.builder;
 
 import java.util.Arrays;
 
-public class Student {
+public class Pupil {
 
   private String name;
   private String surname;
@@ -64,8 +64,8 @@ public class Student {
       return this;
     }
 
-    Student build() {
-      Student student = new Student();
+    Pupil build() {
+      Pupil student = new Pupil();
       student.name = name;
       student.surname = surname;
       student.age = age;
