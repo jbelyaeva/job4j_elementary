@@ -22,10 +22,12 @@ public class PriorityQueue {
    */
   public void put(Task task) {
 
-    int index = 0;
+    var index = 0;
     if (tasks.size() != 0) {
-      for (Task element : tasks) {
-        if (task.getPriority() < element.getPriority())  break;
+      for (var element : tasks) {
+        if (task.getPriority() < element.getPriority()) {
+          break;
+        }
         index++;
       }
     }
