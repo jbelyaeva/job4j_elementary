@@ -8,9 +8,7 @@ public class Matrix {
 
   public static List<Integer> transform(Integer[][] startMatrix) {
     return Arrays.stream(startMatrix)
-        .map(integers -> Arrays.stream(integers)
-            .collect(Collectors.toList()))
-        .flatMap(e -> e.stream())
+        .flatMap(Arrays::stream)
         .collect(Collectors.toList());
   }
 }
