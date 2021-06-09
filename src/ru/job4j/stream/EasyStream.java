@@ -1,64 +1,41 @@
 package ru.job4j.stream;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
 public class EasyStream {
 
-  private static List<Integer> str = new ArrayList<>();
+  private List<Integer> str;
 
-  private Consumer<Consumer<Integer>> action;
-
-  public EasyStream(Consumer<Consumer<Integer>> action) {
-    this.action = action;
+  private EasyStream(List<Integer> source) {
+    this.str = source;
   }
 
-  public void forEach(Consumer<Integer> cons) {
-    action.accept(cons);
-  }
-
-  public Integer[] toArray(IntFunction<Integer[]> fun) {
-    final List<Integer> res = new ArrayList<>();
-    forEach(e -> res.add(e));
-    return res.toArray(fun.apply(res.size()));
-  }
-
-  public static EasyStream of(List<Integer> sourse) {
-    Iterable<Integer> result = new Iterable<Integer>() {
-      @Override
-      public Iterator<Integer> iterator() {
-        return sourse.stream().iterator();
-      }
-    };
-    EasyStream res = new EasyStream(result::forEach);
-    str = Arrays.asList(res.toArray(Integer[]::new));
-    return res;
+  public static EasyStream of(List<Integer> source) {
+    return new EasyStream(source);
   }
 
   public EasyStream map(Function<Integer, Integer> fun) {
-    EasyStream rsl = new EasyStream(cons -> forEach(e -> cons.accept(fun.apply(e))));
-    str = Arrays.asList(rsl.toArray(Integer[]::new));
-    return rsl;
+    List<Integer> list = new ArrayList<>();
+    for (int i = 0; i < str.size(); i++) {
+      list.add(fun.apply(str.get(i)));
+    }
+    return new EasyStream(list);
   }
 
   public EasyStream filter(Predicate<Integer> fun) {
-    EasyStream rsl = new EasyStream(cons -> forEach(e -> {
-      if (fun.test(e)) {
-        cons.accept(e);
+    List<Integer> list = new ArrayList<>();
+    for (int i = 0; i < str.size(); i++) {
+      if (fun.test(str.get(i))) {
+        list.add(str.get(i));
       }
-    }));
-    str = Arrays.asList(rsl.toArray(Integer[]::new));
-    return rsl;
+    }
+    return new EasyStream(list);
   }
 
   public List<Integer> collect() {
     return str;
   }
-
 }
