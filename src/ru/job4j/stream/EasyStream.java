@@ -36,6 +36,6 @@ public class EasyStream {
   }
 
   public List<Integer> collect() {
-    return str;
+    return new ArrayList<>(str);
   }
 }
